@@ -20,6 +20,7 @@
 
         <button class="add_book">Add new book</button>
 
+        <!--
             <div class="book">
                 <div class="test">
                     <div class="title">Demo Card</div>
@@ -31,6 +32,8 @@
                     <button class="remove">Remove</button>
                 </div>
             </div>
+
+        -->
     </div>
 
     <div class="popup_form">
@@ -39,17 +42,17 @@
             <h1>Please, enter the data of your book</h1>
                 <form action="" method="get" id="form">
                     <div class="input_author">
-                        <input type="text" name="author" id="author">
+                        <input type="text" name="author" id="author" maxlength="19">
                         <span></span>
                         <label for="author">Author</label>
                     </div>
                     <div class="input_title">
-                        <input type="text" name="title" id="title">
+                        <input type="text" name="title" id="title" maxlength="19">
                         <span></span>
                         <label for="title">Title</label>
                     </div>
                     <div class="input_pages">
-                        <input type="text" name="pages" id="pages">
+                        <input type="number" name="pages" id="pages" max="9999999999999">
                         <span></span>
                         <label for="pages">Number of pages</label>
                     </div>

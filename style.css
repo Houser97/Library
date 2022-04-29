@@ -6,7 +6,7 @@
     --color-header: #262220;
     --cursive-font:'Ms Madi', cursive;
     --color-body: #C3A6A0;
-    --color-book: #262220;
+    --color-book: #202626;
     --transition-label-time: 0.4s;
     --font-size-label: 18px;
     --input-height: 30px;
@@ -75,9 +75,11 @@ body{
     
 }*/
 
+/*--------------------------GRID-------------------------*/
+
 .container {
     display: grid;
-    grid-template-rows: repeat(auto-fit, 360px);
+    grid-template-rows: repeat(auto-fit, 380px);
     grid-template-columns: repeat(auto-fit, 350px);
     gap: 15px 5px;
     padding: 50px;
@@ -87,7 +89,7 @@ body{
 }
 
 .container .book {
-    height: 360px;
+    height: 380px;
     width: 250px;
     display: flex;
     flex-direction: column;
@@ -97,12 +99,12 @@ body{
 }
 
 .container .book .test {
-    height: 300px;
-    width: 250px;
+    height: 320px;
+    width: 280px;
     background-color: var(--color-book);
     font-family: var(--cursive-font);
     color: #FFD700;
-    font-size: 40px;
+    font-size: 35px;
     font-weight: 600;
     transform: rotateX(20deg);
     position: relative;
@@ -115,6 +117,7 @@ body{
     border-right: 1px var(--color-book)  solid;
     border-top-left-radius: 13px;
 }
+
 
 
 .container .book .botones{
