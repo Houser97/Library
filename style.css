@@ -148,6 +148,19 @@ body{
     /*#18ACBA*/
 }
 
+.container .add_book {
+    width: 80%;
+    height: 100px;
+    font-family: var(--cursive-font),sans-serif;
+    background-color: #B6FFCE;
+    border: 3px #262220 solid;
+    border-radius: 15px;
+    align-self: center;
+    justify-self: center;
+    font-size: 40px;
+    font-weight: 600;
+}
+
 .container .test::before {
     content: "";
     width: calc(100% - 18px);
