@@ -6,7 +6,7 @@
     --color-header: #262220;
     --cursive-font:'Ms Madi', cursive;
     --color-body: #C3A6A0;
-    --color-book: #9b25df;
+    --color-book: #262220;
 
 }
 
@@ -77,56 +77,97 @@ body{
 
 .container {
     display: grid;
-    grid-template-rows: repeat(auto-fit, 300px);
+    grid-template-rows: repeat(auto-fit, 360px);
     grid-template-columns: repeat(auto-fit, 350px);
-    gap: 50px 5px;
+    gap: 15px 5px;
     padding: 50px;
     background-color: var(--color-body);
     justify-content: center;
 
 }
 
-.books{
-    
-
+.container .book {
+    height: 360px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
 }
-.container .test {
+
+.container .book .test {
     height: 300px;
     width: 250px;
     background-color: var(--color-book);
     font-family: var(--cursive-font);
-    color: white;
+    color: #FFD700;
     font-size: 40px;
     font-weight: 600;
     transform: rotateX(20deg);
     position: relative;
     transform-style: preserve-3d;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
     border-bottom: 0.1px var(--color-book) solid;
     border-right: 1px var(--color-book)  solid;
-    margin: auto;
+    
+}
+
+
+.container .book .botones{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+
+
+.container .book button{
+    font-family: var(--cursive-font),sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    height: 35px;
+    width: 80px;
+    padding: 0;
+    border: none;
+    color: black;
+    border: 2px #262220 solid;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.container .book .remove {
+    background-color: #DD8EA4;
+}
+
+.container .book .read {
+    background-color: #8CBDB9;
+    /*#18ACBA*/
 }
 
 .container .test::before {
     content: "";
-    width: calc(100% - 10px);
+    width: calc(100% - 18px);
     height: 60px;
-    background-color: white;
+    background-color: rgb(204, 204, 204);
     position: absolute;
     bottom: 0;
     transform-origin: bottom;
     transform: rotateX(90deg);
     border-top: 15px var(--color-book) solid;
-    border-left: 5px var(--color-book) solid;
-    border-right: 5px var(--color-book) solid;
+    border-left: 8px var(--color-book) solid;
+    border-right: 10px var(--color-book) solid;
 }
 
 .container .test::after{
     content: "";
     height: 100%;
     position: absolute;
-    left: 5px;
+    left: 7px;
     
     border-left: 2px silver dashed;
 }
+
