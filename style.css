@@ -7,6 +7,9 @@
     --cursive-font:'Ms Madi', cursive;
     --color-body: #C3A6A0;
     --color-book: #262220;
+    --transition-label-time: 0.4s;
+    --font-size-label: 18px;
+    --input-height: 30px;
 
 }
 
@@ -209,11 +212,70 @@ body{
 
 .container_form {
     height: 400px;
-    width: 400px;
+    width: 300px;
     background-color: white;
     padding: 30px;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+}
+
+h1{
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+
+form{
+    height: 100%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+form > div{ /* Selecciona a los DIVS que son hijos directos */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: space-between;
+    border-bottom: 1px silver solid;
+}
+
+label{
+    font-size: var(--font-size-label);
+    position: absolute;
+    top: -20px;
+    transition: var(--transition-label-time);
+    color: #3b5754;
+}
+
+input {
+    outline: none;
+    border: none;
+    height: var(--input-height);
+    padding: 0 0px;
+    padding-left: 2px;
+}
+
+span::before{
+    content: "";
+    background: #2691d9;
+    width: 0%;
+    top: var(--input-height);
+    position: absolute;
+    height: 2px;
+    transition: var(--transition-label-time);
+    left: 0;
+}
+
+input:focus ~span::before{
+    width: 100%;
+}
+
+input:focus ~ label{
+    font-size: calc(var(--font-size-label) + 2px);
+    color: #2691d9;
 }
