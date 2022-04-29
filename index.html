@@ -9,11 +9,13 @@
     <title>Document</title>
 </head>
 <body>
+
     <div class="header">
         <div class="title">Library</div> 
         <div class="opacity"></div>
         <div class="wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-30.76,114.97 C149.99,150.00 242.37,29.13 515.52,140.63 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #C3A6A0;"></path></svg></div>
     </div>
+
     <div class="container">
 
         <button class="add_book">Add new book</button>
@@ -29,9 +31,26 @@
                     <button class="remove">Remove</button>
                 </div>
             </div>
+    </div>
 
-
-
+    <div class="popup_form">
+        <div class="container_form">
+            <h1>Please, enter the data of your book</h1>
+                <form action="">
+                    <div class="input_author">
+                        <input type="text" name="author" id="author">
+                        <label for="author">Author</label>
+                    </div>
+                    <div class="input_title">
+                        <input type="text" name="title" id="title">
+                        <label for="title">Title</label>
+                    </div>
+                    <div class="input_pages">
+                        <input type="text" name="pages" id="pages">
+                        <label for="pages">Number of pages</label>
+                    </div>
+                </form>
+        </div>
     </div>
     
 </body>
