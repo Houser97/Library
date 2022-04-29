@@ -161,6 +161,17 @@ body{
     font-weight: 600;
 }
 
+.container .add_book:hover{
+    background-color: #d1fdfd;
+}
+
+.container .book .remove:hover{
+    background-color: #daafbb;
+}
+.container .book .read:hover{
+    background-color: #bdd6d4;
+}
+
 .container .test::before {
     content: "";
     width: calc(100% - 18px);
