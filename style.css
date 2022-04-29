@@ -39,7 +39,7 @@ body{
     font-size: 120px;
     position: relative;
     color: white;
-    padding-bottom: 100px;  
+    padding-bottom: 120px;  
     background: url( https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=990&q=80), var(--color-background-header);
     background-size: cover;
     background-attachment: fixed;
@@ -113,7 +113,7 @@ body{
     align-items: center;
     border-bottom: 0.1px var(--color-book) solid;
     border-right: 1px var(--color-book)  solid;
-    
+    border-top-left-radius: 13px;
 }
 
 
@@ -181,9 +181,10 @@ body{
     bottom: 0;
     transform-origin: bottom;
     transform: rotateX(90deg);
-    border-top: 15px var(--color-book) solid;
+    border-top: 20px var(--color-book) solid;
     border-left: 8px var(--color-book) solid;
     border-right: 10px var(--color-book) solid;
+    border-top-left-radius: 20px;
 }
 
 .container .test::after{
@@ -204,9 +205,9 @@ body{
     height: 100%;
     top: 0;
     bottom: 0;
-    display: flex;
+    display: none; /* desactiva la pantalla emergente con NONE */
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     z-index: 1;
 }
 
@@ -214,17 +215,21 @@ body{
     height: 400px;
     width: 300px;
     background-color: white;
-    padding: 30px;
+    padding: 20px;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-top: 200px;
+    position: relative;
 }
 
 h1{
     font-size: 30px;
     margin-bottom: 50px;
+    padding-bottom: 15px;
+    border-bottom: 2px silver solid;
 }
 
 form{
@@ -278,4 +283,26 @@ input:focus ~span::before{
 input:focus ~ label{
     font-size: calc(var(--font-size-label) + 2px);
     color: #2691d9;
+}
+
+button[type='submit']{
+    background-color: #0A62D0;
+    color: white;
+    padding: 10px 0px;
+    border: 3px black solid;
+    border-radius: 10px;
+    width: 70%;
+    align-self: center;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.close{
+    position: absolute;
+    font-size: 36px;
+    right: 12px;
+    top: 0px;
+    font-weight: 700;
+    transform: rotate(45deg);
+    cursor: pointer;
 }
