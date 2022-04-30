@@ -3,6 +3,8 @@ let author = document.getElementById('author').value;
 let title = document.getElementById('title').value;
 let pagesNumber = document.getElementById('pages').value;
 const containerBooks = document.querySelector('.container');
+let radioButtonYes = document.getElementById('yes');
+let radioButtonNo = document.getElementById('no');
 
 let contadorLibro = 0;
 
@@ -24,7 +26,7 @@ function Book(titleBook, authorBook, Pages) {
     this.pages = Pages;
 }
 
-function createBook(bookList){
+function createBook(bookList,radioButton){
     let divsList = [];
     let classes = ['book','test','title','author','pages','botones','read','remove'];
     
@@ -44,16 +46,20 @@ function createBook(bookList){
         }
     }
 
-    /* Check if checkbox is checked 
-    if(checkbox.value == 'on'){
+    
+    if(radioButton.id == 'yes'){
+        divsList[6].removeAttribute('class');
+        divsList[6].classList.add('read');
+        divsList[6].textContent = 'Read'
+    } else {
         divsList[6].removeAttribute('class');
         divsList[6].classList.add('noread');
-    }*/
+        divsList[6].textContent = 'No Read'
+    }
 
 
     /*Botones*/
     divsList[7].textContent = 'Remove';
-    divsList[6].textContent = 'Read';
     divsList[5].appendChild(divsList[6]);
     divsList[5].appendChild(divsList[7])
     /* primera parte */
@@ -75,12 +81,16 @@ function collectDataForm(e) {
     author = document.getElementById('author').value;
     title = document.getElementById('title').value;
     pagesNumber = document.getElementById('pages').value;
+    let radioButton = document.querySelector('input[type="radio"]:checked');
+
+    console.log(radioButton);
+    
 
     /*----------- Crear instancia de libro------- */
     const book = new Book(title, author, pagesNumber);
     myLibrary.push(book);
     console.log(myLibrary);
-    createBook(myLibrary);
+    createBook(myLibrary,radioButton);
 }
 
 
