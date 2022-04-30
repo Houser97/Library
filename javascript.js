@@ -5,7 +5,7 @@ let pagesNumber = document.getElementById('pages').value;
 const containerBooks = document.querySelector('.container');
 let radioButtonYes = document.getElementById('yes');
 let radioButtonNo = document.getElementById('no');
-
+let readButton = 0;
 let contadorLibro = 0;
 
 let myLibrary = [];
@@ -73,6 +73,8 @@ function createBook(bookList,radioButton){
     divsList[0].appendChild(divsList[5]); /* Se agregan los botones al DIV BOOK */
     containerBooks.appendChild(divsList[0]); /* Se agrega todo al DIV CONTAINER*/
     contadorLibro += 1;
+    let readButton = divsList[6]
+    return readButton.addEventListener('click', changeRead); /*Retorna el boton READ a crear para poder usar EVENT LISTENER*/ 
 }
 
 function collectDataForm(e) {
@@ -94,6 +96,22 @@ function collectDataForm(e) {
 }
 
 
+function changeRead(e) {
+    if(this.classList[0] == 'read'){
+        this.removeAttribute('class');
+        this.classList.add('noread');
+        this.textContent = 'No Read'
+    } else {
+        this.removeAttribute('class');
+        this.classList.add('read');
+        this.textContent = 'Read'
+    }
+
+}
+
+
+
+
 const addNewBook = document.querySelector('.add_book');
 addNewBook.addEventListener('click', openForm);
 
@@ -102,4 +120,5 @@ closeButtonForm.addEventListener('click', closeForm);
 
 const form = document.getElementById('form');
 form.addEventListener('submit', collectDataForm);
+
 

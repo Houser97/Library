@@ -326,11 +326,11 @@ button[type='submit']{
 }
 
 .noread {
-    background-color:#ba6e18;
+    background-color:#184bba;
 }
 
 .container .book .noread:hover{
-    background-color: #c59a68;
+    background-color: #456cbe;
 }
 
 .already{
