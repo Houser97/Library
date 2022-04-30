@@ -50,7 +50,7 @@ function createBook(bookList){
     divsList[5].appendChild(divsList[7])
     /* primera parte */
     divsList[4].textContent = myLibrary[contadorLibro].pages+' pages';
-    divsList[3].textContent = myLibrary[contadorLibro].nameAuthor;
+    divsList[3].textContent = 'By: ' + myLibrary[contadorLibro].nameAuthor;
     divsList[2].textContent = myLibrary[contadorLibro].titleB;
     divsList[1].appendChild(divsList[2]); /* primero el titulo, sino quedaria hasta abajo*/
     divsList[1].appendChild(divsList[3]);
