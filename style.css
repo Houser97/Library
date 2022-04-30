@@ -144,10 +144,12 @@ body{
 
 .container .book .remove {
     background-color: #DD8EA4;
+    cursor: pointer;
 }
 
 .container .book .read {
     background-color: #8CBDB9;
+    cursor: pointer;
     /*#18ACBA*/
 }
 
@@ -331,6 +333,7 @@ button[type='submit']{
 
 .container .book .noread:hover{
     background-color: #456cbe;
+    cursor: pointer;
 }
 
 .already{

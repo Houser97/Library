@@ -6,6 +6,7 @@ const containerBooks = document.querySelector('.container');
 let radioButtonYes = document.getElementById('yes');
 let radioButtonNo = document.getElementById('no');
 let readButton = 0;
+let removeButton = 0;
 let contadorLibro = 0;
 
 let myLibrary = [];
@@ -20,11 +21,22 @@ function closeForm(e) {
     containerForm.style.display = 'none';
 }
 
+function eraseBook(e) {
+    let clase = this.classList[1];
+    let parentDOM = document.getElementById(`${clase}`);
+
+    parentDOM.innerHTML='';
+    parentDOM.remove();
+
+}
+
 function Book(titleBook, authorBook, Pages) {
     this.nameAuthor = authorBook;
     this.titleB = titleBook;
     this.pages = Pages;
 }
+
+
 
 function createBook(bookList,radioButton){
     let divsList = [];
@@ -54,12 +66,14 @@ function createBook(bookList,radioButton){
     } else {
         divsList[6].removeAttribute('class');
         divsList[6].classList.add('noread');
-        divsList[6].textContent = 'No Read'
+        divsList[6].textContent = 'Not Read'
     }
 
 
     /*Botones*/
     divsList[7].textContent = 'Remove';
+    divsList[7].classList.add(`${contadorLibro}`);
+    console.log( divsList[7]);
     divsList[5].appendChild(divsList[6]);
     divsList[5].appendChild(divsList[7])
     /* primera parte */
@@ -69,15 +83,19 @@ function createBook(bookList,radioButton){
     divsList[1].appendChild(divsList[2]); /* primero el titulo, sino quedaria hasta abajo*/
     divsList[1].appendChild(divsList[3]);
     divsList[1].appendChild(divsList[4]);
+    divsList[0].id=`${contadorLibro}`;
     divsList[0].appendChild(divsList[1]); /* Se agrega la primera seccion al DIV BOOK */
     divsList[0].appendChild(divsList[5]); /* Se agregan los botones al DIV BOOK */
     containerBooks.appendChild(divsList[0]); /* Se agrega todo al DIV CONTAINER*/
     contadorLibro += 1;
-    let readButton = divsList[6]
-    return readButton.addEventListener('click', changeRead); /*Retorna el boton READ a crear para poder usar EVENT LISTENER*/ 
+    let readButton = divsList[6];
+    removeButton = divsList[7];
+    removeButton.addEventListener('click', eraseBook);
+    readButton.addEventListener('click', changeRead); /*Retorna el boton READ a crear para poder usar EVENT LISTENER*/ 
 }
 
 function collectDataForm(e) {
+    closeForm();
     e.preventDefault();
     /*---------- Select inputs --------- */
     author = document.getElementById('author').value;
@@ -100,7 +118,7 @@ function changeRead(e) {
     if(this.classList[0] == 'read'){
         this.removeAttribute('class');
         this.classList.add('noread');
-        this.textContent = 'No Read'
+        this.textContent = 'Not Read'
     } else {
         this.removeAttribute('class');
         this.classList.add('read');
@@ -108,6 +126,7 @@ function changeRead(e) {
     }
 
 }
+
 
 
 
