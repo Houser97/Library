@@ -190,6 +190,8 @@ body{
     border-top-left-radius: 20px;
 }
 
+/* line for sewn appearance */
+
 .container .test::after{
     content: "";
     height: 100%;
@@ -215,7 +217,7 @@ body{
 }
 
 .container_form {
-    height: 400px;
+    height: 450px;
     width: 300px;
     background-color: white;
     padding: 20px;
@@ -242,6 +244,10 @@ form{
     flex-direction: column;
     justify-content: space-between;
     
+}
+
+.container_form #form .input_check{
+    border: none;
 }
 
 form > div{ /* Selecciona a los DIVS que son hijos directos */
@@ -283,9 +289,14 @@ input:focus ~span::before{
     width: 100%;
 }
 
-input:focus ~ label{
+input:focus ~label {
     font-size: calc(var(--font-size-label) + 2px);
     color: #2691d9;
+}
+
+input[type='checkbox']:focus ~label{
+    font-size: var(--font-size-label);
+    color: #3b5754;
 }
 
 button[type='submit']{
