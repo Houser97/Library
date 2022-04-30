@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="javascript.js" defer></script>
-    <title>Document</title>
+    <title>Library</title>
 </head>
 <body>
 
@@ -41,25 +41,34 @@
             <div class="close">+</div>
             <h1>Please, enter the data of your book</h1>
                 <form action="" method="get" id="form">
-                    <div class="input_author">
-                        <input type="text" name="author" id="author" maxlength="15">
-                        <span></span>
-                        <label for="author">Author</label>
+                    <div class="first-section">
+                        <div class="input_author">
+                            <input type="text" name="author" id="author" maxlength="15">
+                            <span></span>
+                            <label for="author">Author</label>
+                        </div>
+                        <div class="input_title">
+                            <input type="text" name="title" id="title" maxlength="19">
+                            <span></span>
+                            <label for="title">Title</label>
+                        </div>
+                        <div class="input_pages">
+                            <input type="number" name="pages" id="pages" max="9999999999999">
+                            <span></span>
+                            <label for="pages">Number of pages</label>
+                        </div>
                     </div>
-                    <div class="input_title">
-                        <input type="text" name="title" id="title" maxlength="19">
-                        <span></span>
-                        <label for="title">Title</label>
+
+                    <div class="already">Already read?</div>
+                    <div class="radio">
+                        
+                        <label for="yes">Yes</label>
+                        <input type="radio" name="yes" id="yes">
+
+                        <label for="no">No</label>
+                        <input type="radio" name="yes" id="no">
                     </div>
-                    <div class="input_pages">
-                        <input type="number" name="pages" id="pages" max="9999999999999">
-                        <span></span>
-                        <label for="pages">Number of pages</label>
-                    </div>
-                    <div class="input_check">
-                        <input type="checkbox" name="check" id="check">
-                        <label for="check" class="check">Already read?</label>
-                    </div>
+
                     <button type="submit">Submit</button>
                 </form>
         </div>

@@ -3,6 +3,7 @@ let author = document.getElementById('author').value;
 let title = document.getElementById('title').value;
 let pagesNumber = document.getElementById('pages').value;
 const containerBooks = document.querySelector('.container');
+
 let contadorLibro = 0;
 
 let myLibrary = [];
@@ -42,6 +43,13 @@ function createBook(bookList){
             divsList[i].classList.add(classes[i]);;
         }
     }
+
+    /* Check if checkbox is checked 
+    if(checkbox.value == 'on'){
+        divsList[6].removeAttribute('class');
+        divsList[6].classList.add('noread');
+    }*/
+
 
     /*Botones*/
     divsList[7].textContent = 'Remove';
@@ -84,3 +92,4 @@ closeButtonForm.addEventListener('click', closeForm);
 
 const form = document.getElementById('form');
 form.addEventListener('submit', collectDataForm);
+

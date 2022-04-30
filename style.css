@@ -162,6 +162,7 @@ body{
     justify-self: center;
     font-size: 40px;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .container .add_book:hover{
@@ -246,11 +247,17 @@ form{
     
 }
 
-.container_form #form .input_check{
-    border: none;
+.first-section{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
 }
 
-form > div{ /* Selecciona a los DIVS que son hijos directos */
+
+form .first-section> div{ /* Selecciona a los DIVS que son hijos directos */
     display: flex;
     flex-direction: column;
     position: relative;
@@ -258,7 +265,7 @@ form > div{ /* Selecciona a los DIVS que son hijos directos */
     border-bottom: 1px silver solid;
 }
 
-label{
+.first-section label{
     font-size: var(--font-size-label);
     position: absolute;
     top: -20px;
@@ -274,7 +281,7 @@ input {
     padding-left: 2px;
 }
 
-span::before{
+.first-section span::before{
     content: "";
     background: #2691d9;
     width: 0%;
@@ -285,19 +292,15 @@ span::before{
     left: 0;
 }
 
-input:focus ~span::before{
+.first-section input:focus ~span::before{
     width: 100%;
 }
 
-input:focus ~label {
+.first-section input:focus ~label {
     font-size: calc(var(--font-size-label) + 2px);
     color: #2691d9;
 }
 
-input[type='checkbox']:focus ~label{
-    font-size: var(--font-size-label);
-    color: #3b5754;
-}
 
 button[type='submit']{
     background-color: #0A62D0;
@@ -309,6 +312,7 @@ button[type='submit']{
     align-self: center;
     font-weight: 600;
     font-size: 20px;
+    cursor: pointer;
 }
 
 .close{
@@ -319,4 +323,22 @@ button[type='submit']{
     font-weight: 700;
     transform: rotate(45deg);
     cursor: pointer;
+}
+
+.noread {
+    background-color:#18ACBA;
+}
+
+.container .book .noread:hover{
+    background-color: #5db3bb;
+}
+
+.already{
+    padding: 10px;
+}
+
+.radio{
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
 }
