@@ -140,4 +140,7 @@ closeButtonForm.addEventListener('click', closeForm);
 const form = document.getElementById('form');
 form.addEventListener('submit', collectDataForm);
 
+/* Firebase section */
+
+
 
