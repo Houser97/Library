@@ -1,3 +1,5 @@
+import { saveBook } from "./firebase.js";
+
 const containerForm = document.querySelector('.popup_form');
 let author = document.getElementById('author').value;
 let title = document.getElementById('title').value;
@@ -42,7 +44,7 @@ function createBook(bookList,radioButton){
     let divsList = [];
     let classes = ['book','test','title','author','pages','botones','read','remove'];
     
-    for(i = 0; i<=7; i++){
+    for(let i = 0; i<=7; i++){
         if(i>5){
             divsList[i] = document.createElement('button');
         } else {
@@ -50,7 +52,7 @@ function createBook(bookList,radioButton){
         }
     }
 
-    for(i = 0; i<=7; i++){
+    for(let i = 0; i<=7; i++){
         if(i>5){
             divsList[i].classList.add(classes[i]); ;
         } else {
@@ -104,7 +106,11 @@ function collectDataForm(e) {
     let radioButton = document.querySelector('input[type="radio"]:checked');
 
     console.log(radioButton);
+    /* firebase section */
+    let isRead = (radioButton.id === "yes") ? true : false;
+    saveBook(author, title, pagesNumber, isRead);
     
+    /* ------- */
 
     /*----------- Crear instancia de libro------- */
     const book = new Book(title, author, pagesNumber);
@@ -141,9 +147,5 @@ const form = document.getElementById('form');
 form.addEventListener('submit', collectDataForm);
 
 /* Firebase section */
-import { signIn } from "./firebase.js";
-
-const signUp = document.querySelector(".sign-up");
-signUp.addEventListener('click', signIn);
 
 

@@ -3,14 +3,14 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.4/firebase
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-auth.js"
-import { } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js"
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js"
 
 
-/* Authentication */
-export async function signIn() {
-    let provider = new GoogleAuthProvider();
-    await signInWithPopup(getAuth(), provider);
+/* Save books in database */
+export const saveBook = (author, title, NumPages, isRead) => {
+    addDoc(collection(db, "library"), {author, title, NumPages, isRead});
 }
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -24,3 +24,4 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const db = getFirestore();
