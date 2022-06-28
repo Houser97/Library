@@ -141,6 +141,9 @@ const form = document.getElementById('form');
 form.addEventListener('submit', collectDataForm);
 
 /* Firebase section */
+import { signIn } from "./firebase.js";
 
+const signUp = document.querySelector(".sign-up");
+signUp.addEventListener('click', signIn);
 
 

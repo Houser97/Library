@@ -2,8 +2,15 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-auth.js"
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-auth.js"
 import { } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js"
+
+
+/* Authentication */
+export async function signIn() {
+    let provider = new GoogleAuthProvider();
+    await signInWithPopup(getAuth(), provider);
+}
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
