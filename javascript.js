@@ -1,4 +1,4 @@
-import { saveBook } from "./firebase.js";
+import { saveBook, getBooks, getProfilePicUrl, getUserName } from "./firebase.js";
 
 const containerForm = document.querySelector('.popup_form');
 let author = document.getElementById('author').value;
@@ -61,15 +61,15 @@ function createBook(bookList,radioButton){
     }
 
     
-    if(radioButton.id == 'yes'){
+    if(radioButton.id == 'yes' || radioButton === true){
         divsList[6].removeAttribute('class');
         divsList[6].classList.add('read');
         divsList[6].textContent = 'Read'
-    } else {
+    } else if(radioButton.id == 'no' ||radioButton === false) {
         divsList[6].removeAttribute('class');
         divsList[6].classList.add('noread');
         divsList[6].textContent = 'Not Read'
-    }
+    } 
 
 
     /*Botones*/
@@ -147,5 +147,42 @@ const form = document.getElementById('form');
 form.addEventListener('submit', collectDataForm);
 
 /* Firebase section */
+window.addEventListener("DOMContentLoaded", async () => {
+    let querySnapshot = await getBooks();
+    querySnapshot.forEach(doc => {
+        doc = doc.data();
+        let authorDB = doc.author;
+        let title = doc.title;
+        let pages = doc.NumPages;
+        let isRead = doc.isRead;
 
+            /*----------- Crear instancia de libro------- */
+        const book = new Book(title, authorDB, pages);
+        myLibrary.push(book);
+        console.log(myLibrary);
+        createBook(myLibrary,isRead);
+    });
 
+})
+
+/* Auth */
+import { signIn } from "./firebase.js";
+const buttonSign = document.querySelector(".sign-up");
+buttonSign.addEventListener("click", async () => {
+    await signIn()
+    const pictureURL = await getProfilePicUrl();
+    const nameUser = await getUserName();
+
+    const buttons = document.querySelector(".buttons-fb");
+    const userData = document.querySelector("#user-data");
+
+    buttons.style.display = "none";
+    userData.style.display = "flex";
+
+    const userPicture = document.querySelector(".user-photo");
+    userPicture.src = pictureURL;
+    console.log(userPicture);
+
+    const userName = document.querySelector(".user-name");
+    userName.textContent = nameUser;
+});

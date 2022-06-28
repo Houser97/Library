@@ -3,7 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.4/firebase
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-auth.js"
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js"
+import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js"
 
 
 /* Save books in database */
@@ -11,6 +11,26 @@ export const saveBook = (author, title, NumPages, isRead) => {
     addDoc(collection(db, "library"), {author, title, NumPages, isRead});
 }
 
+/* Retrieve book's information */
+export const getBooks = () => {
+    return getDocs(collection(db, "library"));
+}
+
+/* Authentication */
+export const signIn = async () => {
+    let provider = new GoogleAuthProvider();
+    await signInWithPopup(getAuth(), provider);
+}
+
+/* Get user photo */
+export const getProfilePicUrl = () => {
+    return getAuth().currentUser.photoURL;
+}
+
+/* Get user name */
+export const getUserName = () => {
+    return getAuth().currentUser.displayName;
+}
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
