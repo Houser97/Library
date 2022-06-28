@@ -345,3 +345,37 @@ button[type='submit']{
     display: flex;
     justify-content: space-around;
 }
+
+/* Firebase section */
+.header {
+    position: relative;
+}
+
+.header .buttons-fb{
+    position: absolute;
+    top: 5px; right: 5px;
+    width: 100px; height: 100px;
+
+    display: flex; flex-flow: column; 
+    justify-content: space-between;
+}
+
+.button-common-class {
+    height: 30px;
+    border-radius: 5px; 
+    cursor: pointer;
+    border: none;
+
+    font-size: 15px; color: white;
+    font-weight: 600;
+}
+
+.sign-up {
+    background-color: #0A62D0;
+    font-size: 15px; color: white;
+    font-weight: 600;
+}
+
+.log-out {
+    background-color: #202626;
+}
