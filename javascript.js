@@ -32,6 +32,15 @@ function eraseBook(e) {
 
 }
 
+function eraseBook2(book) {
+    let clase = book.classList[1];
+    let parentDOM = document.getElementById(`${clase}`);
+
+    parentDOM.innerHTML='';
+    parentDOM.remove();
+
+}
+
 function Book(titleBook, authorBook, Pages) {
     this.nameAuthor = authorBook;
     this.titleB = titleBook;
@@ -75,7 +84,7 @@ function createBook(bookList,radioButton){
     /*Botones*/
     divsList[7].textContent = 'Remove';
     divsList[7].classList.add(`${contadorLibro}`);
-    console.log( divsList[7]);
+    /*console.log( divsList[7]);*/
     divsList[5].appendChild(divsList[6]);
     divsList[5].appendChild(divsList[7])
     /* primera parte */
@@ -105,7 +114,7 @@ function collectDataForm(e) {
     pagesNumber = document.getElementById('pages').value;
     let radioButton = document.querySelector('input[type="radio"]:checked');
 
-    console.log(radioButton);
+    /*console.log(radioButton);*/
     /* firebase section */
     let isRead = (radioButton.id === "yes") ? true : false;
     saveBook(author, title, pagesNumber, isRead);
@@ -115,7 +124,7 @@ function collectDataForm(e) {
     /*----------- Crear instancia de libro------- */
     const book = new Book(title, author, pagesNumber);
     myLibrary.push(book);
-    console.log(myLibrary);
+    /*console.log(myLibrary);*/
     createBook(myLibrary,radioButton);
 }
 
@@ -149,7 +158,8 @@ form.addEventListener('submit', collectDataForm);
 /* Firebase section */
 window.addEventListener("DOMContentLoaded", async () => {
     let querySnapshot = await getBooks();
-    querySnapshot.forEach(doc => {
+    if (querySnapshot !== undefined)
+{    querySnapshot.forEach(doc => {
         doc = doc.data();
         let authorDB = doc.author;
         let title = doc.title;
@@ -159,10 +169,10 @@ window.addEventListener("DOMContentLoaded", async () => {
             /*----------- Crear instancia de libro------- */
         const book = new Book(title, authorDB, pages);
         myLibrary.push(book);
-        console.log(myLibrary);
+        /*console.log(myLibrary);*/
         createBook(myLibrary,isRead);
     });
-
+}
 })
 
 /* Auth */
@@ -181,8 +191,33 @@ buttonSign.addEventListener("click", async () => {
 
     const userPicture = document.querySelector(".user-photo");
     userPicture.src = pictureURL;
-    console.log(userPicture);
 
     const userName = document.querySelector(".user-name");
     userName.textContent = nameUser;
+
+
+    const books = document.querySelectorAll(".book");
+    books.forEach(book => book.remove());
+
+    let querySnapshot = await getBooks();
+    if (querySnapshot !== undefined)
+{    querySnapshot.forEach(doc => {
+        doc = doc.data();
+        let authorDB = doc.author;
+        let title = doc.title;
+        let pages = doc.NumPages;
+        let isRead = doc.isRead;
+
+            /*----------- Crear instancia de libro------- */
+        const book = new Book(title, authorDB, pages);
+        myLibrary.push(book);
+        /*console.log(myLibrary);*/
+        createBook(myLibrary,isRead);
+    });
+}
+
+
+
+
+    
 });

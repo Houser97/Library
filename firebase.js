@@ -5,21 +5,36 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.4/firebase
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-auth.js"
 import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js"
 
+let user = '';
 
 /* Save books in database */
 export const saveBook = (author, title, NumPages, isRead) => {
-    addDoc(collection(db, "library"), {author, title, NumPages, isRead});
+    console.log(user);
+    if(user !== ''){
+    addDoc(collection(db, `library ${user}`), {author, title, NumPages, isRead});
+    } else {
+        addDoc(collection(db, `library`), {author, title, NumPages, isRead});
+    }
 }
+
 
 /* Retrieve book's information */
 export const getBooks = () => {
-    return getDocs(collection(db, "library"));
+    console.log(user);
+    if(user !== ''){
+       return getDocs(collection(db, `library ${user}`));
+    } else {
+       return getDocs(collection(db, `library`));
+    }
 }
 
 /* Authentication */
 export const signIn = async () => {
     let provider = new GoogleAuthProvider();
-    await signInWithPopup(getAuth(), provider);
+    provider.setCustomParameters({
+        prompt: "select_account"
+    })
+    await signInWithPopup(getAuth(), provider).then(userD => user = userD.user.uid);
 }
 
 /* Get user photo */
