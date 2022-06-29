@@ -214,10 +214,38 @@ buttonSign.addEventListener("click", async () => {
         /*console.log(myLibrary);*/
         createBook(myLibrary,isRead);
     });
-}
-
-
-
-
-    
+}   
 });
+
+/* Sign out */
+import { signOutUser } from "./firebase.js";
+const signOutButton = document.querySelector(".log-out");
+signOutButton.addEventListener("click", async () => {
+    await signOutUser();
+    const buttons = document.querySelector(".buttons-fb");
+    const userData = document.querySelector("#user-data");
+
+    buttons.style.display = "flex";
+    userData.style.display = "none";
+
+    const books = document.querySelectorAll(".book");
+    books.forEach(book => book.remove());
+
+    let querySnapshot = await getBooks();
+    if (querySnapshot !== undefined)
+{    querySnapshot.forEach(doc => {
+        doc = doc.data();
+        let authorDB = doc.author;
+        let title = doc.title;
+        let pages = doc.NumPages;
+        let isRead = doc.isRead;
+
+            /*----------- Crear instancia de libro------- */
+        const book = new Book(title, authorDB, pages);
+        myLibrary.push(book);
+        /*console.log(myLibrary);*/
+        createBook(myLibrary,isRead);
+    });
+}   
+
+})

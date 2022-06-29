@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-auth.js"
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-auth.js"
 import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js"
 
 let user = '';
@@ -20,7 +20,7 @@ export const saveBook = (author, title, NumPages, isRead) => {
 
 /* Retrieve book's information */
 export const getBooks = () => {
-    console.log(user);
+    /*console.log(user);*/
     if(user !== ''){
        return getDocs(collection(db, `library ${user}`));
     } else {
@@ -36,6 +36,14 @@ export const signIn = async () => {
     })
     await signInWithPopup(getAuth(), provider).then(userD => user = userD.user.uid);
 }
+
+// Signs-out of Friendly Chat.
+export function signOutUser() {
+    // Sign out of Firebase.
+    signOut(getAuth());
+    user = "";
+}
+
 
 /* Get user photo */
 export const getProfilePicUrl = () => {
